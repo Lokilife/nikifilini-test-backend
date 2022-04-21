@@ -38,13 +38,13 @@ export interface OrderItem {
     status: string;
     quantity: number;
     offer?: Nullable<OrderItemOffer>;
-    comment: string;
+    comment?: Nullable<string>;
 }
 
 export interface Order {
     number: string;
     id: number;
-    site: string;
+    site?: Nullable<string>;
     createdAt: string;
     status: string;
     delivery?: Nullable<OrderDelivery>;

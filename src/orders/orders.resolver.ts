@@ -1,13 +1,25 @@
+import { OrdersResponse } from '../graphql'
 import { Args, Query, Resolver } from '@nestjs/graphql'
 import { RetailService } from '../retail_api/retail.service'
-import { OrdersResponse } from '../graphql'
 
 @Resolver('Orders')
 export class OrdersResolver {
   constructor(private retailService: RetailService) {}
 
   @Query()
+  async getOrders(): Promise<OrdersResponse> {
+    return await this.retailService.orders()
+  }
+
+  @Query()
   async order(@Args('number') id: string) {
-    return this.retailService.findOrder(id)
+    try {
+      return await this.retailService.findOrder(id, {
+        site: process.env.SITE
+      })
+    } catch (e) {
+      console.log(e)
+      return e
+    }
   }
 }

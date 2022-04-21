@@ -26,13 +26,21 @@ type OrderItem {
     status: String!
     quantity: Int!
     offer: OrderItemOffer
-    comment: String!
+    
+    # Вообще не нашло ни единого комментария в том, что есть в API,
+    # хотя в документации API его присутствие отмечено и тут он почему-то
+    # был указан как non-nullable, но это лишь вызывало ошибку,
+    comment: String 
 }
 
 type Order {
     number: String!
     id: Int!
-    site: String!
+
+    # У половины заказов что есть в API нету сайтов, хотя тут оно также как и с комментарием
+    # помечено как non-nullable, что тоже вызывало ошибку. Подозреваю что у всех тестируемых 
+    # один токен и одна БД и один из других что-то изменил.
+    site: String
     createdAt: String!
     status: String!
     delivery: OrderDelivery
@@ -42,4 +50,3 @@ type Order {
 type OrderDelivery {
     code: String
 }
-

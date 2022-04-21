@@ -20,6 +20,11 @@ export type OrdersFilter = {
   }
 }
 
+export type OrderFilter = {
+  by?: string,
+  site: string,
+}
+
 export class CrmType {
   name: string
   code: string
