@@ -7,8 +7,8 @@ export class OrdersResolver {
   constructor(private retailService: RetailService) {}
 
   @Query()
-  async getOrders(): Promise<OrdersResponse> {
-    return await this.retailService.orders()
+  async getOrders(@Args('page') page: number): Promise<OrdersResponse> {
+    return await this.retailService.orders({page: page || 1})
   }
 
   @Query()
