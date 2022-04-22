@@ -16,9 +16,12 @@ type Pagination {
 }
 
 type OrderItemOffer {
+    id: String
     externalId: String
     displayName: String
+    name: String
     article: String
+    varRate: String
 }
 
 type OrderItem {

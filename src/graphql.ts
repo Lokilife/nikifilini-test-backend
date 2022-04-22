@@ -28,9 +28,12 @@ export interface Pagination {
 }
 
 export interface OrderItemOffer {
+    id?: Nullable<string>;
     externalId?: Nullable<string>;
     displayName?: Nullable<string>;
+    name?: Nullable<string>;
     article?: Nullable<string>;
+    varRate?: Nullable<string>;
 }
 
 export interface OrderItem {
